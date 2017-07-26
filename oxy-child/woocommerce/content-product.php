@@ -35,19 +35,19 @@ if(is_product() || !is_shop() || !is_product_category() || !is_taxonomy('brands'
     $cols = $woocommerce_loop['columns'];
 }
 
-switch ($cols){            
-    case 3:        
+switch ($cols){
+    case 3:
         $colclass = 'large-4 medium-4 small-6';
-        break;    
-    case 4:        
+        break;
+    case 4:
         $colclass = 'large-3 medium-4 small-6';
         break;
-    case 6:        
+    case 6:
         $colclass = 'large-2 medium-4 small-6';
         break;
-    default:        
+    default:
         $colclass = 'large-6 medium-4 small-6';
-        break; 
+        break;
 }
 
 ?>
@@ -58,15 +58,15 @@ switch ($cols){
 		echo '';
 	elseif ( ( $woocommerce_loop['loop'] - 1 ) % $woocommerce_loop['columns'] == 0 )
 		echo ' clearleft';
-        
+
 //        if($smof_data->oxy_general_settings['oxy_category_prod_align'] == 2){
-//            echo ' centered'; 
+//            echo ' centered';
 //        }
-        
+
         ?>">
-	
-            
-	 <?php do_action( 'woocommerce_before_shop_loop_item' ); 
+
+
+	 <?php do_action( 'woocommerce_before_shop_loop_item' );
          ?>
 	<div class="image">
 	  <a href="<?php the_permalink(); ?>">
@@ -78,16 +78,16 @@ switch ($cols){
 			   * @hooked woocommerce_template_loop_product_thumbnail - 10
 			   */
 			  do_action( 'woocommerce_before_shop_loop_item_title' );
-		  ?>          	
+		  ?>
 	  </a>
             <?php
             if($smof_data->oxy_general_settings['oxy_cat_prod_wis_com_status'] == 1){
             ?>
-            <div class="flybar"> 
-                <?php 
-                
-                if(isset($yith_wcwl) && is_object($yith_wcwl)){ 
-                $classes = get_option( 'yith_wcwl_use_button' ) == 'yes' ? 'class="add_to_wishlist wishlist single_add_to_wishlist button alt"' : 'class="add_to_wishlist wishlist add_to_wishlist_small"';    
+            <div class="flybar">
+                <?php
+
+                if(isset($yith_wcwl) && is_object($yith_wcwl)){
+                $classes = get_option( 'yith_wcwl_use_button' ) == 'yes' ? 'class="add_to_wishlist wishlist single_add_to_wishlist button alt"' : 'class="add_to_wishlist wishlist add_to_wishlist_small"';
               ?>
                 <a href="<?php echo esc_url( $yith_wcwl->get_addtowishlist_url() )?>" data-product-id="<?php echo $product->id ?>" data-product-type="<?php echo $product->product_type ?>" <?php echo $classes?>><div><?php _e('Add to Wish List','oxy')?></div></a>
                 <a title="<?php _e('Add to Wish List','oxy')?>" class="wishlist-tip"><div><?php _e('Add to Wish List','oxy')?></div></a>
@@ -95,7 +95,7 @@ switch ($cols){
             }
             if(class_exists('YITH_Woocompare_Frontend')){
               $oxy_yith_cmp = new YITH_Woocompare_Frontend;
-            ?>            
+            ?>
                 <a class="compare add_to_compare_small" data-product_id="<?php echo $product->id?>" href="<?php echo $oxy_yith_cmp->add_product_url( $product->id )?>"><div><?php _e('Add to Compare','oxy')?></div></a>
                 <a title="<?php _e('Add to Compare','oxy')?>" class="compare-tip"><div><?php _e('Add to Compare','oxy')?></div></a>
             <?php
@@ -110,14 +110,14 @@ switch ($cols){
     <div class="name"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div>
     <?php } if($smof_data->oxy_general_settings['oxy_category_prod_brand_status'] == 1){?>
     <div class="product_box_brand">
-        <?php 
+        <?php
         $brands = wp_get_post_terms($product->id, 'brands');
         if(!empty($brands)){
             $brand = $brands[0];
             $blink = get_term_link($brand,'brands');
         ?>
-        <span><?php _e('Size:','oxy')?></span> <a href="<?php echo $blink; ?>"><?php echo $brand->name?></a>
-        <?php         
+        <span class="bk-size"><?php _e('Size:','oxy')?></span> <a href="<?php echo $blink; ?>"><?php echo $brand->name?></a>
+        <?php
         }
         ?>
     </div>
@@ -131,11 +131,11 @@ switch ($cols){
 		   */
 		   do_action( 'woocommerce_after_shop_loop_item_title' );
 	  ?>
-        
+
     <div class="cart">
-        <?php do_action( 'woocommerce_after_shop_loop_item' );     
-    ?></div>	   
+        <?php do_action( 'woocommerce_after_shop_loop_item' );
+    ?></div>
     <div class="clear"></div>
-	
+
 
 </li>

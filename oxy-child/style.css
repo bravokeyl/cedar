@@ -163,6 +163,42 @@ h6 {
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33ffffff', endColorstr='#03ffffff', GradientType=0);
 }
+.single-product.bk-customizing .fpd-icon-photo,
+.single-product.bk-customizing .fpd-bottom-nav .fpd-add-design {
+  font-size: 16px;
+}
+.single-product.bk-customizing .fpd-bottom-nav .fpd-add-image .fpd-icon-photo:before {
+  content: 'UPLOAD PHOTO';
+}
+.single-product.bk-customizing .fpd-bottom-nav .fpd-add-design .fpd-icon-design-library:before {
+  content: 'CHANGE PHOTO';
+}
+.cart-collaterals {
+  padding-bottom: 30px;
+}
+.cart-collaterals .cart_totals {
+  display: none;
+}
+.page.woocommerce-cart table.cart img,
+.page.woocommerce-checkout table.cart img {
+    width: 100px;
+}
+.bk-update-warn {
+  color: red;
+  text-transform: uppercase;
+  margin-left: 10px;
+}
+.bk-size {
+  display: none;
+}
+.bk-before-cart-form {
+  display: none;
+  font-weight: bold;
+  text-align: center;
+}
+.single-product.bk-customizing .bk-before-cart-form {
+  display: block;
+}
 @media only screen and (min-width: 600px) {
   body #header {
     background-image: url('/wp-content/uploads/2016/04/laura-lynn-association1???.png') !important;

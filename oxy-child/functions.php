@@ -49,3 +49,15 @@ function bk_query_class($c) {
 }
 
 add_filter('jpeg_quality', function($arg){ return 100; });
+
+//add_action('wp_enqueue_scripts', 'bk_fpd_custom_script');
+function bk_fpd_custom_script(){
+	wp_enqueue_script('bk-fpd',get_theme_file_uri('bk-fpd.js'),array(),'1.0.0',true);
+}
+
+add_action('woocommerce_before_add_to_cart_form','bk_before_add_to_cart_form');
+function bk_before_add_to_cart_form(){?>
+	<div class="bk-before-cart-form">
+		Please check carefully your text (spellings, dates, etc) before proceeding. You will receive a proof for final checking of your order from us within 24 hrs (via email).
+	</div>
+<?php }

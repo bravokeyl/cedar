@@ -17,16 +17,15 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit;
 }
 
 wc_print_notices();
 
 do_action( 'woocommerce_before_cart' ); ?>
 
-<form action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
-
-<?php do_action( 'woocommerce_before_cart_table' ); ?>
+<form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
+	<?php do_action( 'woocommerce_before_cart_table' ); ?>
 
 <table class="shop_table shop_table_responsive cart" cellspacing="0">
 	<thead>
@@ -83,7 +82,8 @@ do_action( 'woocommerce_before_cart' ); ?>
 							if ( ! $product_permalink ) {
 								echo apply_filters( 'woocommerce_cart_item_name', $_product->get_title(), $cart_item, $cart_item_key ) . '&nbsp;';
 							} else {
-								echo apply_filters( 'woocommerce_cart_item_name', sprintf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $_product->get_title() ), $cart_item, $cart_item_key );
+								$custom_permalink = $product_permalink."&start_customizing=yes";
+								echo apply_filters( 'woocommerce_cart_item_name', sprintf( '<a href="%s">%s</a>', esc_url( $custom_permalink ), $_product->get_title() ), $cart_item, $cart_item_key );
 							}
 
 							// Meta data
@@ -119,17 +119,16 @@ do_action( 'woocommerce_before_cart' ); ?>
 						?>
 						<input type = "hidden" id = "aspk_prod_id_<?php echo $hassan; ?>" value = "<?php echo $product_id; ?>"/>
 						<select id = "quantity_custum_<?php  echo $hassan; ?>" name = "cart[<?php echo $cart_item_key?>][qty]" onchange = "quantity_change(<?php echo $hassan; ?>);">
-							<option value = "10" <?php selected( 10, $cart_item['quantity']); ?>>10</option>
-							<option value = "20" <?php selected( 20, $cart_item['quantity']); ?>>20</option>
-							<option value = "30" <?php selected( 30, $cart_item['quantity']); ?>>30</option>
-							<option value = "40" <?php selected( 40, $cart_item['quantity']); ?>>40</option>
+							<option value = "25" <?php selected( 25, $cart_item['quantity']); ?>>25</option>
 							<option value = "50" <?php selected( 50, $cart_item['quantity']); ?>>50</option>
 							<option value = "75" <?php selected( 75, $cart_item['quantity']); ?>>75</option>
 							<option value = "100" <?php selected( 100, $cart_item['quantity']); ?>>100</option>
-						  <option value = "125" <?php selected( 125, $cart_item['quantity']); ?>>125</option>
 							<option value = "150" <?php selected( 150, $cart_item['quantity']); ?>>150</option>
-							<option value = "175" <?php selected( 175, $cart_item['quantity']); ?>>175</option>
 							<option value = "200" <?php selected( 200, $cart_item['quantity']); ?>>200</option>
+							<option value = "250" <?php selected( 250, $cart_item['quantity']); ?>>250</option>
+						  <option value = "300" <?php selected( 300, $cart_item['quantity']); ?>>300</option>
+							<option value = "400" <?php selected(400, $cart_item['quantity']); ?>>400</option>
+							<option value = "500" <?php selected( 500, $cart_item['quantity']); ?>>500</option>
 						</select>
 					</td>
 
@@ -143,7 +142,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 				<script>
 				var carditems;
 				jQuery( document ).ready(function() {
-					jQuery('.cart-collaterals').hide();
+					jQuery('.cart_totals').hide();
 					var quant_s;
 					for(quant_s = 1; quant_s <= <?php echo $hassan_count; ?>; quant_s++){
 						quantity_change(quant_s);
@@ -215,6 +214,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 						<label for="coupon_code"><?php _e( 'Coupon:', 'woocommerce' ); ?></label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> <input type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply Coupon', 'woocommerce' ); ?>" />
 
 						<?php do_action( 'woocommerce_cart_coupon' ); ?>
+						<span class="bk-update-warn">Important* Please click the 'Update Cart' button on changing your quantity.</span>
 					</div>
 				<?php } ?>
 
@@ -239,7 +239,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 <div class="cart-collaterals">
 
-	<?php //do_action( 'woocommerce_cart_collaterals' ); ?>
+	<?php do_action( 'woocommerce_cart_collaterals' ); ?>
 
 </div>
 
