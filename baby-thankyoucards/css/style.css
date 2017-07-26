@@ -1,0 +1,128 @@
+
+.bar {
+    height: 18px;
+    background: green;
+}
+
+#personalize_main {
+	clear: both;
+	float: left;
+	width: 1024px;
+	margin-left: 63px;
+}
+
+#personalize_image {
+	position: relative;
+	clear: left;
+	float: left;
+	width: 500px;
+	height: 500px;
+	background-image: url(/wp-content/plugins/baby-thankyoucards/image/checkers.png);
+}
+
+#personalize_settings{
+	clear: right;
+	float: left;
+	margin-left: 8em;
+	width: 315px;
+
+}
+
+
+
+.layer{
+	overflow: hidden;
+	position: absolute;
+	background-image: url(/wp-content/plugins/baby-thankyoucards/image/checkers.png);
+}
+
+.txt_layer{
+	overflow: hidden;
+	position: absolute;
+	background: transparent;
+}
+
+.layer-freeze {
+	pointer-events: none;
+}
+
+
+.card_text_area{
+	float: left;
+	width: 200px;
+	margin-top: 1.5em;
+}
+
+.txt_size_block{
+	width: 100px;
+	float: left;
+	margin-left: 8px;
+	margin-top: 1.5em;
+}
+
+.noresize{
+	resize: none;
+	height: 60px !important;
+	overflow-y: hidden !important;
+}
+
+.btn_row{
+	float:left;
+	clear:left;
+}
+
+.aspk_back{
+	float:left;
+	margin-top:1em;
+}
+
+.aspk_next{
+	float:left;
+	margin-top:1em;
+}
+.upload_image label input[type="file"] {
+    position: fixed;
+    top: -1000px;
+}
+
+.upload_label {
+    border: 2px solid #AAA;
+    border-radius: 8px;
+    padding: 6px 13px;
+    margin: 2px;
+    background: #983ec9;
+    display: inline-block;
+    color: white;
+	height: 3em;
+}
+
+.upload_label:hover {
+    border: 2px solid blue;
+}
+
+.upload_label:active {
+    background: #CCF;
+}
+
+.img_controls{
+	display:none;
+	border:1px solid grey;
+	border-radius: 8px;
+	padding-top: 10px;
+	padding-left: 10px;
+	margin-bottom: 15px;
+}
+
+img.bnw{
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	filter: grayscale(100%);
+	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
+}
+.ui-dialog-titlebar-close{
+	background: url(/wp-content/plugins/baby-thankyoucards/image/x.png) no-repeat !important;
+}
+/*
+@import url(http://fonts.googleapis.com/css?family=Indie+Flower);
+@import url(http://fonts.googleapis.com/css?family=Pacifico);
+*/
