@@ -29,18 +29,18 @@ if ( !class_exists( 'Agile_Baby_Thankyou' )){
 		function woocommerce_add_cart_item($cart_item_data,$itt,$cart_item_key){
 			$items = WC()->cart->get_cart();
       if ( empty($items) ) {
-				$cart_item_data['quantity'] =  10;
+				$cart_item_data['quantity'] =  25;
       } else {
 				foreach($items as $item => $values) {
 					if($cart_item_data['product_id'] == $values['product_id']){
-							if($values['quantity'] >= 10) {
+							if($values['quantity'] >= 25) {
 								$cart_item_data['quantity'] = $values['quantity'];
 							} else {
-								$cart_item_data['quantity'] = 10;
+								$cart_item_data['quantity'] = 25;
 							}
 							// wp_die($cart_item_data['product_id']);
 					} else {
-						$cart_item_data['quantity'] =  10;
+						$cart_item_data['quantity'] =  25;
 					}
         }
         // wp_die(0);
@@ -125,20 +125,19 @@ if ( !class_exists( 'Agile_Baby_Thankyou' )){
 			$qtn_unit_price = array();
 			if( isset( $_POST['submit_qtn_price'] ) ){
 				//$unit_price_item = $_POST['unit_price'];
-				$qtn_unit_price[$_POST['qtn_10']] = $_POST['unit_price_10'];
-				$qtn_unit_price[$_POST['qtn_20']] = $_POST['unit_price_20'];
-				$qtn_unit_price[$_POST['qtn_30']] = $_POST['unit_price_30'];
-				$qtn_unit_price[$_POST['qtn_40']] = $_POST['unit_price_40'];
+				$qtn_unit_price[$_POST['qtn_25']] = $_POST['unit_price_25'];
 				$qtn_unit_price[$_POST['qtn_50']] = $_POST['unit_price_50'];
 				$qtn_unit_price[$_POST['qtn_75']] = $_POST['unit_price_75'];
 				$qtn_unit_price[$_POST['qtn_100']] = $_POST['unit_price_100'];
-				$qtn_unit_price[$_POST['qtn_125']] = $_POST['unit_price_125'];
 				$qtn_unit_price[$_POST['qtn_150']] = $_POST['unit_price_150'];
-				$qtn_unit_price[$_POST['qtn_175']] = $_POST['unit_price_175'];
 				$qtn_unit_price[$_POST['qtn_200']] = $_POST['unit_price_200'];
+				$qtn_unit_price[$_POST['qtn_250']] = $_POST['unit_price_250'];
+				$qtn_unit_price[$_POST['qtn_300']] = $_POST['unit_price_300'];
+				$qtn_unit_price[$_POST['qtn_400']] = $_POST['unit_price_400'];
+				$qtn_unit_price[$_POST['qtn_500']] = $_POST['unit_price_500'];
 				$qtn_unit_price['agile_single_price'] = $_POST['aspk_price_single_card'];
 				$n_categories = $_POST['catg_name'];
-				if( count( $qtn_unit_price ) != 12 ){
+				if( count( $qtn_unit_price ) != 11 ){
 					?>
 						<script>
 							jQuery('#error_div').dialog();
@@ -147,6 +146,8 @@ if ( !class_exists( 'Agile_Baby_Thankyou' )){
 					<?php return;
 				}else{
 					$arr = get_option('_aspk_cat_price');
+					// wp_die(print_r($arr));
+					// exit;
 					$arr[$n_categories] = $qtn_unit_price;
 					update_option('_aspk_cat_price',$arr);
 				}
@@ -191,7 +192,7 @@ if ( !class_exists( 'Agile_Baby_Thankyou' )){
 							<form action = "" method = "POST">
 								<input type = "hidden" name = "catg_name" value = "<?php if(!empty($categ_name)){ echo $categ_name; }else{ echo $n_categories;}  ?>" />
 								<div style = "clear:left;float:left;">
-									<div style = "float:left;width:12em;"><b>Set single card price</b></div>
+									<div style = "float:left;width:10em;"><b>Set single card price</b></div>
 									<div style = "float:left;width:10em;">
 										<input type = "text" name = "aspk_price_single_card" value = "<?php if(!empty($price)) echo $price['agile_single_price'];    ?>"   />
 									</div>
@@ -201,59 +202,31 @@ if ( !class_exists( 'Agile_Baby_Thankyou' )){
 									<div style = "float:left;width:10em;">Price Per Item</div>
 								</div>
 								<div style = "clear:left;float:left;">
-									<div style = "float:left;width:10em;">10</div>
+									<div style = "float:left;width:10em;">25</div>
 									<div style = "float:left;width:10em;">
-										<input type = "hidden" name = "qtn_10" value = "10" />
-										<input required type = "text" name= "unit_price_10" placeholder = "Set Price Per Item" value = "<?php if(!empty($price)) echo $price[10];  ?>"/>
-									</div>
-								</div>
-								<div style = "clear:left;float:left;">
-									<div style = "float:left;width:10em;">20</div>
-									<div style = "float:left;width:10em;">
-										<input type = "hidden" name = "qtn_20" value = "20" />
-										<input required type = "text" name= "unit_price_20" placeholder = "Set Price Per Item" value = "<?php if(!empty($price)) echo $price[20]; ?>"/>
-									</div>
-								</div>
-								<div style = "clear:left;float:left;">
-									<div style = "float:left;width:10em;">30</div>
-									<div style = "float:left;width:10em;">
-										<input type = "hidden" name = "qtn_30" value = "30" />
-										<input required type = "text" name= "unit_price_30" placeholder = "Set Price Per Item" value = "<?php if(!empty($price)) echo $price[30]; ?>" />
-									</div>
-								</div>
-								<div style = "clear:left;float:left;">
-									<div style = "float:left;width:10em;">40</div>
-									<div style = "float:left;width:10em;">
-										<input type = "hidden" name = "qtn_40" value = "40" />
-										<input required type = "text" name= "unit_price_40" placeholder = "Set Price Per Item" value = "<?php if(!empty($price)) echo $price[40]; ?>" />
+										<input type = "hidden" name = "qtn_25" value = "25" />
+										<input required type = "text" name= "unit_price_25" placeholder = "Set Price Per Item" value = "<?php if(!empty($price)) echo $price[25];  ?>"/>
 									</div>
 								</div>
 								<div style = "clear:left;float:left;">
 									<div style = "float:left;width:10em;">50</div>
 									<div style = "float:left;width:10em;">
 										<input type = "hidden" name = "qtn_50" value = "50" />
-										<input required type = "text" name= "unit_price_50" placeholder = "Set Price Per Item" value = "<?php if(!empty($price)) echo $price[50]; ?>" />
+										<input required type = "text" name= "unit_price_50" placeholder = "Set Price Per Item" value = "<?php if(!empty($price)) echo $price[50]; ?>"/>
 									</div>
 								</div>
 								<div style = "clear:left;float:left;">
 									<div style = "float:left;width:10em;">75</div>
 									<div style = "float:left;width:10em;">
 										<input type = "hidden" name = "qtn_75" value = "75" />
-										<input required type = "text" name = "unit_price_75" placeholder = "Set Price Per Item" value = "<?php if(!empty($price)) echo $price[75]; ?>" />
+										<input required type = "text" name= "unit_price_75" placeholder = "Set Price Per Item" value = "<?php if(!empty($price)) echo $price[75]; ?>" />
 									</div>
 								</div>
 								<div style = "clear:left;float:left;">
 									<div style = "float:left;width:10em;">100</div>
 									<div style = "float:left;width:10em;">
 										<input type = "hidden" name = "qtn_100" value = "100" />
-										<input required type = "text" name = "unit_price_100" placeholder = "Set Price Per Item" value = "<?php if(!empty($price)) echo $price[100]; ?>" />
-									</div>
-								</div>
-								<div style = "clear:left;float:left;">
-									<div style = "float:left;width:10em;">125</div>
-									<div style = "float:left;width:10em;">
-										<input type = "hidden" name = "qtn_125" value = "125" />
-										<input required type = "text" name= "unit_price_125" placeholder = "Set Price Per Item" value = "<?php if(!empty($price)) echo $price[125]; ?>" />
+										<input required type = "text" name= "unit_price_100" placeholder = "Set Price Per Item" value = "<?php if(!empty($price)) echo $price[100]; ?>" />
 									</div>
 								</div>
 								<div style = "clear:left;float:left;">
@@ -264,17 +237,38 @@ if ( !class_exists( 'Agile_Baby_Thankyou' )){
 									</div>
 								</div>
 								<div style = "clear:left;float:left;">
-									<div style = "float:left;width:10em;">175</div>
-									<div style = "float:left;width:10em;">
-										<input type = "hidden" name = "qtn_175" value = "175" />
-										<input required type = "text" name= "unit_price_175" placeholder = "Set Price Per Item" value = "<?php if(!empty($price)) echo $price[175]; ?>" />
-									</div>
-								</div>
-								<div style = "clear:left;float:left;">
 									<div style = "float:left;width:10em;">200</div>
 									<div style = "float:left;width:10em;">
 										<input type = "hidden" name = "qtn_200" value = "200" />
-										<input required type = "text" name= "unit_price_200" placeholder = "Set Price Per Item" value = "<?php if(!empty($price)) echo $price[200]; ?>" />
+										<input required type = "text" name = "unit_price_200" placeholder = "Set Price Per Item" value = "<?php if(!empty($price)) echo $price[200]; ?>" />
+									</div>
+								</div>
+								<div style = "clear:left;float:left;">
+									<div style = "float:left;width:10em;">250</div>
+									<div style = "float:left;width:10em;">
+										<input type = "hidden" name = "qtn_250" value = "250" />
+										<input required type = "text" name = "unit_price_250" placeholder = "Set Price Per Item" value = "<?php if(!empty($price)) echo $price[250]; ?>" />
+									</div>
+								</div>
+								<div style = "clear:left;float:left;">
+									<div style = "float:left;width:10em;">300</div>
+									<div style = "float:left;width:10em;">
+										<input type = "hidden" name = "qtn_300" value = "300" />
+										<input required type = "text" name= "unit_price_300" placeholder = "Set Price Per Item" value = "<?php if(!empty($price)) echo $price[300]; ?>" />
+									</div>
+								</div>
+								<div style = "clear:left;float:left;">
+									<div style = "float:left;width:10em;">400</div>
+									<div style = "float:left;width:10em;">
+										<input type = "hidden" name = "qtn_400" value = "400" />
+										<input required type = "text" name= "unit_price_400" placeholder = "Set Price Per Item" value = "<?php if(!empty($price)) echo $price[400]; ?>" />
+									</div>
+								</div>
+								<div style = "clear:left;float:left;">
+									<div style = "float:left;width:10em;">500</div>
+									<div style = "float:left;width:10em;">
+										<input type = "hidden" name = "qtn_500" value = "500" />
+										<input required type = "text" name= "unit_price_500" placeholder = "Set Price Per Item" value = "<?php if(!empty($price)) echo $price[500]; ?>" />
 									</div>
 								</div>
 
